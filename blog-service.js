@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-require('pg');
+const pg = require('pg');
 
 var sequelize = new Sequelize(
   'kcqnoykz',
@@ -8,7 +8,7 @@ var sequelize = new Sequelize(
   {
     host: 'ruby.db.elephantsql.com',
     dialect: 'postgres',
-    dialectModule: require('pg'),
+    dialectModule: pg,
     port: 5432,
     dialectOptions: {
       ssl: { rejectUnauthorized: false },
