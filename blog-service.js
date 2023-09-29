@@ -1,28 +1,34 @@
 const Sequelize = require('sequelize');
 
-var sequelize = new Sequelize('kcqnoykz', 'kcqnoykz', 'y-C56NXfCfQIxv9U51oF2FPQMsJWAg0P', {
+var sequelize = new Sequelize(
+  'kcqnoykz',
+  'kcqnoykz',
+  'y-C56NXfCfQIxv9U51oF2FPQMsJWAg0P',
+  {
     host: 'ruby.db.elephantsql.com',
     dialect: 'postgres',
+    dialectModule: require('pg'),
     port: 5432,
     dialectOptions: {
-        ssl: { rejectUnauthorized: false }
+      ssl: { rejectUnauthorized: false },
     },
-    query: { raw: true }
-});
+    query: { raw: true },
+  }
+);
 
 const Post = sequelize.define('Post', {
-    body: Sequelize.TEXT,
-    title: Sequelize.STRING,
-    postDate: Sequelize.DATE,
-    featureImage: Sequelize.STRING,
-    published: Sequelize.BOOLEAN
+  body: Sequelize.TEXT,
+  title: Sequelize.STRING,
+  postDate: Sequelize.DATE,
+  featureImage: Sequelize.STRING,
+  published: Sequelize.BOOLEAN,
 });
 
-const Category = sequelize.define("Category", {
+const Category = sequelize.define('Category', {
   category: Sequelize.STRING,
 });
 
-Post.belongsTo(Category, { foreignKey: "category" });
+Post.belongsTo(Category, { foreignKey: 'category' });
 
 function initialize() {
   return new Promise((resolve, reject) => {
@@ -32,7 +38,7 @@ function initialize() {
         resolve();
       })
       .catch(() => {
-        reject("Cannot sync");
+        reject('Cannot sync');
       });
   });
 }
@@ -44,7 +50,7 @@ function getAllPosts() {
         resolve(data);
       })
       .catch(() => {
-        reject("No results");
+        reject('No results');
       });
   });
 }
@@ -60,7 +66,7 @@ function getPublishedPosts() {
         resolve(data);
       })
       .catch(() => {
-        reject("No results");
+        reject('No results');
       });
   });
 }
@@ -72,7 +78,7 @@ function getCategories() {
         resolve(data);
       })
       .catch(() => {
-        reject("No results");
+        reject('No results');
       });
   });
 }
@@ -89,7 +95,7 @@ function getPostsByCategory(category) {
         resolve(data);
       })
       .catch(() => {
-        reject("No results");
+        reject('No results');
       });
   });
 }
@@ -106,7 +112,7 @@ function getPublishedPostsByCategory(category) {
         resolve(data);
       })
       .catch(() => {
-        reject("No results");
+        reject('No results');
       });
   });
 }
@@ -115,7 +121,7 @@ function addPost(postData) {
   return new Promise((resolve, reject) => {
     postData.published = postData.published ? true : false;
     for (const i in postData) {
-      if (postData[i] === "") {
+      if (postData[i] === '') {
         postData[i] = null;
       }
     }
@@ -125,7 +131,7 @@ function addPost(postData) {
         resolve();
       })
       .catch((err) => {
-        reject("Unable to create");
+        reject('Unable to create');
       });
   });
 }
@@ -133,7 +139,7 @@ function addPost(postData) {
 function addCategory(categoryData) {
   return new Promise((resolve, reject) => {
     for (let i in categoryData) {
-      if (categoryData[i] === "") {
+      if (categoryData[i] === '') {
         categoryData[i] = null;
       }
     }
@@ -142,7 +148,7 @@ function addCategory(categoryData) {
         resolve(category);
       })
       .catch(() => {
-        reject("Unable to create");
+        reject('Unable to create');
       });
   });
 }
@@ -155,10 +161,10 @@ function deletePostById(id) {
       },
     })
       .then(() => {
-        resolve("done");
+        resolve('done');
       })
       .catch(() => {
-        reject("Unable to delete");
+        reject('Unable to delete');
       });
   });
 }
@@ -174,7 +180,7 @@ function getPostById(id) {
         resolve(data[0]);
       })
       .catch(() => {
-        reject("No results");
+        reject('No results');
       });
   });
 }
@@ -192,7 +198,7 @@ function getPostsByMinDate(minDate) {
         resolve(data);
       })
       .catch(() => {
-        reject("No results");
+        reject('No results');
       });
   });
 }
@@ -205,10 +211,10 @@ function deleteCategoryById(id) {
       },
     })
       .then(() => {
-        resolve("done");
+        resolve('done');
       })
       .catch(() => {
-        reject("Unable to delete");
+        reject('Unable to delete');
       });
   });
 }
