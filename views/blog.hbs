@@ -1,0 +1,43 @@
+<div class="row">
+    {{#if data.post}}
+    <section class="main col-md-9">
+        <article>
+            <h2>{{data.post.title}}</h2>
+            <img src="{{data.post.featureImage}}" alt="feature Image" style="width:100%" />
+            <br /><br />
+            {{{safeHTML data.post.body}}}
+            <br /><br />
+            <strong>Category:</strong> {{data.post.category}}<br />
+            <strong>Last Updated:</strong> {{data.post.postDate}}
+                </article>
+</section>
+{{/if}}
+<aside class="col-md-3">
+    {{#if data.posts}}
+    <br /><br />
+    <h4>Posts</h4>
+
+    <ul class="list-group">
+        {{#each data.posts}}
+        <a href="/blog/{{this.id}}?category={{../viewingCategory}}" class="list-group-item">{{this.title}}</a>
+        {{/each}}
+    </ul>
+    {{/if}}
+
+    {{#if data.categories}}
+    <h4>Categories</h4>
+
+    <ul class="list-group">
+        {{#each data.categories}}
+        <a href="/blog?category={{this.id}}" class="list-group-item">{{this.category}}</a>
+        {{/each}}
+    </ul>
+    {{/if}}
+</aside>
+{{#unless data.post}}
+<div class="col-md-12 text-center">
+    <h2>{{data.message}}</h2>
+    <p>Please try another Post / Category</p>
+</div>
+{{/unless}}
+</div>

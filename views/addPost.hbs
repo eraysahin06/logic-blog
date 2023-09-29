@@ -1,0 +1,69 @@
+<div class="container" style="padding-top:60px">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Add Post</h2>
+      <br>
+      <form method="post" action="/posts/add" enctype="multipart/form-data" data-dashlane-rid="f203446186b0a52b" data-form-type="other">
+        <fieldset>
+          <legend>Feature Image</legend>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <input class="form-control" id="featureImage" name="featureImage" type="file" data-dashlane-rid="6c25bd954e569bb1" data-form-type="other">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <br>
+        <fieldset>
+          <legend>Post Content</legend>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="title">Title:</label>
+                <input class="form-control" id="title" name="title" type="text" data-dashlane-rid="eedba25a50743aef" data-kwimpalastatus="alive" data-kwimpalaid="1676160454844-0" data-form-type="title,job">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="body">Body:</label>
+                <textarea class="form-control" id="body" name="body" rows="15" data-dashlane-rid="459e944d8459208d" data-form-type="other"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="category">Category:</label>
+                {{#if categories}}
+                <select class="form-control" name="category" id="category">
+                  <option value="">Select Category</option>
+                  {{#each categories}}
+                  <option value="{{id}}">{{category}}</option>
+                  {{/each}}
+                </select>
+                {{else}}
+                <div>No Categories</div>
+                {{/if}}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="category">Visibility:</label>
+                <div class="checkbox">
+                  <label data-dashlane-label="true">
+                    <input type="checkbox" name="published" id="published" data-dashlane-rid="37c6f787cbac6203" data-form-type="other"> Published
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <hr>
+        <input type="submit" class="btn btn-primary pull-right" value="Add Post" data-dashlane-rid="de2ba594d5e94d40" data-form-type="action"><br><br><br>
+      </form>
+    </div>  
+  </div>
+</div>
