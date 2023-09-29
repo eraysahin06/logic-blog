@@ -8,6 +8,7 @@ const cloudinary = require('cloudinary').v2;
 const streamifier = require('streamifier');
 const authData = require('./auth-service.js');
 const clientSessions = require('client-sessions');
+require('pg')
 const {
   initialize,
   getCategories,

@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+require('pg');
 
 var sequelize = new Sequelize(
   'kcqnoykz',
