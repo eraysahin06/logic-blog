@@ -22,6 +22,7 @@ Demo: https://blog-app-exp-hbs-mongo.vercel.app/
 - Express.js
 - Handlebars.js
 - Bootstrap
+- Cloudinary
 
 ## Usage
 Visit the deployed Logic Blog application.
