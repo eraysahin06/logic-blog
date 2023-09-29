@@ -38,7 +38,8 @@ function initialize() {
       .then(() => {
         resolve();
       })
-      .catch(() => {
+      .catch((error) => {
+        console.error('Error syncing database:', error);
         reject('Cannot sync');
       });
   });
