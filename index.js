@@ -8,7 +8,7 @@ const cloudinary = require('cloudinary').v2;
 const streamifier = require('streamifier');
 const authData = require('./auth-service.js');
 const clientSessions = require('client-sessions');
-require('pg')
+require('pg');
 const {
   initialize,
   getCategories,
@@ -25,6 +25,10 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(express.json());
+
+app.set('view engine', 'ejs'); // Replace 'ejs' with your template engine
+app.set('views', path.join(__dirname, 'views')); // Replace 'views' with your views directory
+
 app.engine(
   '.hbs',
   exphbs.engine({
